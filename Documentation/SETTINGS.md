@@ -3,13 +3,16 @@ Create a settings.ini file, paste this inside:
 [settings]
 PRODUCTION=True/False
 
+WTF_CSRF_SECRET_KEY=<generated_key>
+ACCESS_TOKEN=<api_token>
+
 OAUTH_PROVIDER=sanic_oauth.providers.GoogleClient
 OAUTH_REDIRECT_URI=/oauth
 OAUTH_SCOPE=email
 OAUTH_CLIENT_ID=<your_client_id>
 OAUTH_CLIENT_SECRET=<your_client_secret>
 
-WTF_CSRF_SECRET_KEY=<generated_key>
+SENTRY_DSN=<sentry_dsn>
 
 DOMAIN_NAME=<your_production_domain>
 LOCAL_HOST=http://localhost:8000

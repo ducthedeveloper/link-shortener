@@ -140,13 +140,3 @@ async def reset_password_view(request, user, link_id):
                     payload=message,
                     status_code=str(status_code)
                 ), status=status_code)
-
-
-@view_blueprint.route('/error', methods=['GET'])
-@login_required
-@credential_whitelist_check
-async def induce_server_error(request, user):
-    from sentry_sdk import capture_exception
-    capture_exception(Exception("This is an example of an error message."))
-    div_by_zero = 1 / 0
-    return redirect('/links/about')
