@@ -645,25 +645,28 @@
   </body>
   <script>
     // persist checkbox value
-    const filterParam = window.location.search;
-    const filter = {
-      disable: false,
-      owner: "",
-      search: "",
-    };
+    function persistCheck() {
+      const filterParam = window.location.search;
+      const filter = {
+        disable: false,
+        owner: "",
+        search: "",
+      };
 
-    for (const [key, value] of new URLSearchParams(filterParam).entries()) {
-      console.log(key, value);
-      filter[key] = value;
+      for (const [key, value] of new URLSearchParams(filterParam).entries()) {
+        filter[key] = value;
+      }
+
+      $("#checkbox").prop("checked", filter.disable);
+      if (filter.disable) {
+        $("#statusdisabled").css("color", "#CF7317");
+        $("#statusactive").css("color", "#AAA9BC");
+      } else {
+        $("#statusdisabled").css("color", "#AAA9BC");
+        $("#statusactive").css("color", "#1F7A78");
+      }
     }
-    $("#checkbox").prop("checked", filter.disable);
-    if (filter.disable) {
-      $("#statusdisabled").css("color", "#CF7317");
-      $("#statusactive").css("color", "#AAA9BC");
-    } else {
-      $("#statusdisabled").css("color", "#AAA9BC");
-      $("#statusactive").css("color", "#1F7A78");
-    }
+    persistCheck();
     //
     let openmode = document.getElementById("advanced");
     console.log(openmode);
