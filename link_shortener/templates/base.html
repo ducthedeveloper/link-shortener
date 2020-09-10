@@ -94,16 +94,18 @@
       return false;
     }
     //delay search
-    function delayTextSearch() {
+    function delaySomething() {
       var delay = (function () {
         var timer = 0;
         return function (callback, ms) {
           clearTimeout(timer);
           timer = setTimeout(callback, ms);
-          console.log(timer);
         };
       })();
+    }
+    delaySomething();
 
+    function delayTextSearch() {
       $("#search").keyup(function () {
         delay(function () {
           document.getElementById("forms").submit();
