@@ -1,25 +1,18 @@
 //
-let openAdvSettings = document.getElementById("advSettings");
 var icon = document.getElementById("icon");
-var open = false;
 function toggleAdvSettings() {
-  openAdvSettings &&
-    openAdvSettings.addEventListener("click", function () {
-      let modal = document.getElementById("advRequirements");
-      this.classList.toggle("active");
-      if (modal.style.maxHeight) {
-        modal.style.maxHeight = null;
-      } else {
-        modal.style.maxHeight = modal.scrollHeight + "px";
-      }
-      if (open) {
-        icon.className = "fa fa-angle-right";
-      } else {
-        icon.className = "fa fa-angle-right open";
-      }
-
-      open = !open;
-    });
+  let openAdvSettings = document.getElementById("advSettings");
+  openAdvSettings.addEventListener("click", function () {
+    let modal = document.getElementById("advRequirements");
+    this.classList.toggle("active");
+    if (modal.style.maxHeight) {
+      modal.style.maxHeight = null;
+      icon.className = "fa fa-angle-right";
+    } else {
+      modal.style.maxHeight = modal.scrollHeight + "px";
+      icon.className = "fa fa-angle-right open";
+    }
+  });
 }
 // button disable
 function disableBtn() {
@@ -28,31 +21,24 @@ function disableBtn() {
   let formInput = document.getElementsByClassName("formRequiredField");
   for (i = 0; i < formInput.length; i++) {
     submit.disabled = true;
-    formInput &&
-      formInput[i].addEventListener("keyup", function () {
-        if (shortLink.value === "" || orgLink.value === "") {
-          submit.disabled = true;
-        } else {
-          submit.disabled = false;
-        }
-      });
+    formInput[i].addEventListener("keyup", function () {
+      if (shortLink.value === "" || orgLink.value === "") {
+        submit.disabled = true;
+      } else {
+        submit.disabled = false;
+      }
+    });
   }
 }
 // dynamic text update
 
 function txtUpdateOnChange() {
   let shortLink = document.getElementById("shortlink");
-  shortLink &&
-    shortLink.addEventListener("keyup", function () {
-      let printout = document.getElementById("shortlinked");
-      var x = shortLink.value;
-      printout.innerHTML = "www.fueled.by/" + x;
-    });
-
-  if ($(".editAndCreate").length) {
-    document.getElementById("shortlinked").style.color = "#AAA9BC";
-    document.getElementById("shortlinked").style.fontWeight = "bold";
-  }
+  shortLink.addEventListener("keyup", function () {
+    let printout = document.getElementById("shortlinked");
+    var x = shortLink.value;
+    printout.innerHTML = "www.fueled.by/" + x;
+  });
 }
 
 //copy inline

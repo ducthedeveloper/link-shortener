@@ -21,29 +21,25 @@ function addOwnersToSelection() {
 }
 //delay search
 function makeDelay(ms) {
-  var timer = 0;
-  return function (callback) {
+  var timer;
+  return function neco(callback) {
     clearTimeout(timer);
     timer = setTimeout(callback, ms);
   };
 }
 
 function delayTextSearch() {
-  var delay = makeDelay(800);
+  var callback = function () {
+    document.getElementById("forms").submit();
+  };
   $("#search").keyup(function () {
-    delay(function () {
-      document.getElementById("forms").submit();
-    });
+    makeDelay(800)(callback);
   });
 }
 // persist checkbox value
 function getParamValues() {
   const filterParam = window.location.search;
-  const filter = {
-    disable: false,
-    owner: "",
-    search: "",
-  };
+  const filter = {};
 
   for (const [key, value] of new URLSearchParams(filterParam).entries()) {
     filter[key] = value;
@@ -53,7 +49,6 @@ function getParamValues() {
     $("#search").val(filter.search);
     $("#checkbox").prop("checked", filter.disable);
   }
-  persistStateOfFormValues();
   function colorSwitch() {
     if (filter.disable) {
       $("#statusDisabled").css("color", "#CF7317");
@@ -63,6 +58,7 @@ function getParamValues() {
       $("#statusActive").css("color", "#1F7A78");
     }
   }
+  persistStateOfFormValues();
   colorSwitch();
 }
 //

@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <a id="backBtn" href="/links/all">
-  <img src="/links/arrow.svg" alt="" /> Back</a
+  <img src="/links/icon/arrow.svg" alt="" /> Back</a
 >
 <div class="editAndCreate">
   <form id="form" action="" method="POST">
@@ -59,9 +59,9 @@
       <span id="fueled">
         <span id="shortlinked"> www.fueled.by/{{payload.endpoint}}</span>
         <a class="copy" onclick="copySingle()">
-          <img src="/links/copyicon.svg" alt="copyicon" />
+          <img src="/links/icon/copyicon.svg" alt="copyicon" />
           <img
-            src="/links/hovercopy.svg"
+            src="/links/icon/hovercopy.svg"
             alt="hovercopy"
             class="copyIconCreate"
           />
@@ -87,6 +87,9 @@
           {% if payload.password %}
           <a class="resetDelete" href="/reset/{{ payload.id }}"
             >Reset password</a
+          >
+          <a class="reset-delete" href="/delete/{{ payload.id }}/confirm/"
+            >Delete link</a
           >
           {% endif %} {% endif %}
         </div>

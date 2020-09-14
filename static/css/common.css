@@ -123,3 +123,7 @@
   align-items: center;
   justify-content: space-around;
 }
+#shortlinked {
+  font-weight: bold;
+  color: #aaa9bc;
+}

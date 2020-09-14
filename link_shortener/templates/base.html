@@ -3,7 +3,8 @@
 <html lang="en" dir="ltr">
   <head>
     {% block html_head %}{% endblock %}
-
+    <meta charset="utf-8" />
+    <title>Link Shortener</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
       type="text/javascript"
@@ -17,9 +18,7 @@
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
     ></script>
-
-    <meta charset="utf-8" />
-    <title>Link Shortener</title>
+    
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -34,17 +33,15 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
       rel="stylesheet"
     />
-
-
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="/links/all_links.css" />
-    <link rel="stylesheet" href="/links/create.css" />
-    <link rel="stylesheet" href="/links/edit.css" />
-    <link rel="stylesheet" href="/links/delete.css" />
-    <link rel="stylesheet" href="/links/common.css" />
+    <link rel="stylesheet" href="/links/css/all_links.css" />
+    <link rel="stylesheet" href="/links/css/create.css" />
+    <link rel="stylesheet" href="/links/css/edit.css" />
+    <link rel="stylesheet" href="/links/css/delete.css" />
+    <link rel="stylesheet" href="/links/css/common.css" />
 
     <style>
       :root {
@@ -66,8 +63,8 @@
   <body>
     {% block content %} {% endblock %}
   </body>
-  <script src=/links/all_links_form.js></script>
-  <script src=/links/createAndEdit.js></script>
-  <script src="/links/onReady.js"></script>
+  <script src=/links/js/all_links_form.js></script>
+  <script src=/links/js/create_edit.js></script>
+  <script src="/links/js/on_ready.js"></script>
 
 </html>
