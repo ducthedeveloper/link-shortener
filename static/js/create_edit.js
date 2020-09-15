@@ -2,17 +2,18 @@
 var icon = document.getElementById("icon");
 function toggleAdvSettings() {
   let openAdvSettings = document.getElementById("advSettings");
-  openAdvSettings.addEventListener("click", function () {
-    let modal = document.getElementById("advRequirements");
-    this.classList.toggle("active");
-    if (modal.style.maxHeight) {
-      modal.style.maxHeight = null;
-      icon.className = "fa fa-angle-right";
-    } else {
-      modal.style.maxHeight = modal.scrollHeight + "px";
-      icon.className = "fa fa-angle-right open";
-    }
-  });
+  openAdvSettings &&
+    openAdvSettings.addEventListener("click", function () {
+      let modal = document.getElementById("advRequirements");
+      this.classList.toggle("active");
+      if (modal.style.maxHeight) {
+        modal.style.maxHeight = null;
+        icon.className = "fa fa-angle-right";
+      } else {
+        modal.style.maxHeight = modal.scrollHeight + "px";
+        icon.className = "fa fa-angle-right open";
+      }
+    });
 }
 // button disable
 function disableBtn() {
@@ -34,11 +35,12 @@ function disableBtn() {
 
 function txtUpdateOnChange() {
   let shortLink = document.getElementById("shortlink");
-  shortLink.addEventListener("keyup", function () {
-    let printout = document.getElementById("shortlinked");
-    var x = shortLink.value;
-    printout.innerHTML = "www.fueled.by/" + x;
-  });
+  shortLink &&
+    shortLink.addEventListener("keyup", function () {
+      let printout = document.getElementById("shortlinked");
+      var x = shortLink.value;
+      printout.innerHTML = "www.fueled.by/" + x;
+    });
 }
 
 //copy inline

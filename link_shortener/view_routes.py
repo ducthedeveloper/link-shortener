@@ -108,7 +108,7 @@ async def delete_link_view(request, user, link_id):
 @credential_whitelist_check
 async def confirm_delete_link_view(request, user, link_id):
     return html(template_loader(
-                    template_file='delete_link.html',
+                    template_file='delete.html',
                     link_id=link_id), status=200)
 
 
