@@ -4,6 +4,20 @@ function clearFilters() {
   location.reload();
   return false;
 }
+function addOwnersToSelection() {
+  let ownerArray = [];
+  let owners = document.getElementsByClassName("rowOwner");
+  let ownerFilter = document.getElementById("ownerFilter");
+  for (i = 0; i < owners.length; i++) {
+    ownerArray.push(owners[i].innerHTML);
+  }
+  let ownerNewArr = [...new Set(ownerArray)];
+  for (i = 0; i < ownerNewArr.length; i++) {
+    let opt = document.createElement("option");
+    opt.appendChild(document.createTextNode(ownerNewArr[i]));
+    ownerFilter.appendChild(opt);
+  }
+}
 //delay search
 function makeDelay(ms) {
   var timer = 0;
@@ -31,8 +45,16 @@ function getParamValues() {
   }
   function persistStateOfFormValues() {
     document.getElementById("checkbox").checked = filter.is_active;
-    document.getElementById("search").value = filter.search;
-    document.getElementById("ownerFilter").value = filter.owner;
+    if (filter.search == undefined) {
+      document.getElementById("search").value = "";
+    } else {
+      document.getElementById("search").value = filter.search;
+    }
+    if (filter.owner == undefined) {
+      document.getElementById("ownerFilter").value = "";
+    } else {
+      document.getElementById("ownerFilter").value = filter.owner;
+    }
   }
   persistStateOfFormValues();
   function colorSwitch() {
