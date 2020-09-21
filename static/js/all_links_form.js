@@ -4,21 +4,6 @@ function clearFilters() {
   location.reload();
   return false;
 }
-// getting unique owners
-function addOwnersToSelection() {
-  let ownerArray = [];
-  let owners = document.getElementsByClassName("rowOwner");
-  let ownerFilter = document.getElementById("ownerFilter");
-  for (i = 0; i < owners.length; i++) {
-    ownerArray.push(owners[i].innerHTML);
-  }
-  let ownerNewArr = [...new Set(ownerArray)];
-  for (i = 0; i < ownerNewArr.length; i++) {
-    let opt = document.createElement("option");
-    opt.appendChild(document.createTextNode(ownerNewArr[i]));
-    ownerFilter.appendChild(opt);
-  }
-}
 //delay search
 function makeDelay(ms) {
   var timer = 0;
@@ -30,7 +15,7 @@ function makeDelay(ms) {
 
 function delayTextSearch() {
   var delay = makeDelay(800);
-  $("#search").keyup(function () {
+  document.getElementById("search").addEventListener("keyup", function () {
     delay(function () {
       document.getElementById("forms").submit();
     });
@@ -39,28 +24,24 @@ function delayTextSearch() {
 // persist checkbox value
 function getParamValues() {
   const filterParam = window.location.search;
-  const filter = {
-    disable: false,
-    owner: "",
-    search: "",
-  };
+  const filter = {};
 
   for (const [key, value] of new URLSearchParams(filterParam).entries()) {
     filter[key] = value;
   }
   function persistStateOfFormValues() {
-    $("#ownerFilter").val(filter.owner);
-    $("#search").val(filter.search);
-    $("#checkbox").prop("checked", filter.disable);
+    document.getElementById("checkbox").checked = filter.is_active;
+    document.getElementById("search").value = filter.search;
+    document.getElementById("ownerFilter").value = filter.owner;
   }
   persistStateOfFormValues();
   function colorSwitch() {
-    if (filter.disable) {
-      $("#statusDisabled").css("color", "#CF7317");
-      $("#statusActive").css("color", "#AAA9BC");
+    if (filter.is_active) {
+      document.getElementById("statusDisabled").style.color = "#CF7317";
+      document.getElementById("statusActive").style.color = "#AAA9BC";
     } else {
-      $("#statusDisabled").css("color", "#AAA9BC");
-      $("#statusActive").css("color", "#1F7A78");
+      document.getElementById("statusDisabled").style.color = "#AAA9BC";
+      document.getElementById("statusActive").style.color = "#1F7A78";
     }
   }
   colorSwitch();
