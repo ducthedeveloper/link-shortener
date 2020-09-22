@@ -29,11 +29,13 @@ function makeDelay(ms) {
 
 function delayTextSearch() {
   var delay = makeDelay(800);
-  document.getElementById("search").addEventListener("keyup", function () {
-    delay(function () {
-      document.getElementById("forms").submit();
+  if (window.location.pathname == "/links/all") {
+    document.getElementById("search").addEventListener("keyup", function () {
+      delay(function () {
+        document.getElementById("forms").submit();
+      });
     });
-  });
+  }
 }
 // persist checkbox value
 function getParamValues() {
@@ -44,26 +46,30 @@ function getParamValues() {
     filter[key] = value;
   }
   function persistStateOfFormValues() {
-    document.getElementById("checkbox").checked = filter.is_active;
-    if (filter.search == undefined) {
-      document.getElementById("search").value = "";
-    } else {
-      document.getElementById("search").value = filter.search;
-    }
-    if (filter.owner == undefined) {
-      document.getElementById("ownerFilter").value = "";
-    } else {
-      document.getElementById("ownerFilter").value = filter.owner;
+    if (window.location.pathname == "/links/all") {
+      document.getElementById("checkbox").checked = filter.is_active;
+      if (filter.search == undefined) {
+        document.getElementById("search").value = "";
+      } else {
+        document.getElementById("search").value = filter.search;
+      }
+      if (filter.owner == undefined) {
+        document.getElementById("ownerFilter").value = "";
+      } else {
+        document.getElementById("ownerFilter").value = filter.owner;
+      }
     }
   }
   persistStateOfFormValues();
   function colorSwitch() {
-    if (filter.is_active) {
-      document.getElementById("statusDisabled").style.color = "#CF7317";
-      document.getElementById("statusActive").style.color = "#AAA9BC";
-    } else {
-      document.getElementById("statusDisabled").style.color = "#AAA9BC";
-      document.getElementById("statusActive").style.color = "#1F7A78";
+    if (window.location.pathname == "/links/all") {
+      if (filter.is_active) {
+        document.getElementById("statusDisabled").style.color = "#CF7317";
+        document.getElementById("statusActive").style.color = "#AAA9BC";
+      } else {
+        document.getElementById("statusDisabled").style.color = "#AAA9BC";
+        document.getElementById("statusActive").style.color = "#1F7A78";
+      }
     }
   }
   colorSwitch();
