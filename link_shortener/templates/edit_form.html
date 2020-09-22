@@ -3,7 +3,7 @@
   <img src="/links/icons/arrow.svg" alt="" /> Back</a
 >
 <div class="editAndCreate">
-  <form class="form" action="" method="POST">
+  <form class="form" action="#" method="POST">
     <h1 class="form-header">Edit Shortlink</h1>
     <div class="ownerOfLinkContainer">
       <span class="ownerOfLink">owned by</span> {{payload.owner}}
@@ -63,8 +63,8 @@
         {% endif %}
       </div>
       <span id="fueled">
-        <div>
-          <span id="shortlinked">www.fueled.by</span
+        <div id="shortlinked">
+          <span>www.fueled.by</span
           ><!-- / --><span id="fueledEndPoint">/{{payload.endpoint}}</span>
         </div>
         <div>
