@@ -118,6 +118,14 @@ switch (values) {
     popUp.style.display = "flex";
     popUp.innerHTML = "Link deleted";
     break;
+  case "duplicate":
+    popUp.style.display = "flex";
+    popUp.innerHTML = "This shortlink already exists";
+    break;
+  case "form-invalid":
+    popUp.style.display = "flex";
+    popUp.innerHTML = "Form invalid";
+    break;
 }
 
 let pop = document.getElementById("popEdit");
@@ -130,4 +138,13 @@ switch (value) {
   case "deactivated":
     pop.style.display = "flex";
     pop.innerHTML = "Link disabled";
+    break;
+  case "form-invalid":
+    pop.style.display = "flex";
+    pop.innerHTML = "Form Invalid";
+    break;
+  case "reset":
+    pop.style.display = "flex";
+    pop.innerHTML = "Password reset";
+    break;
 }
