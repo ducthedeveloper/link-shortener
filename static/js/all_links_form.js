@@ -126,6 +126,7 @@ switch (values) {
     popUp.style.display = "flex";
     popUp.innerHTML = "Form invalid";
     break;
+
 }
 
 let pop = document.getElementById("popEdit");
@@ -147,4 +148,5 @@ switch (value) {
     pop.style.display = "flex";
     pop.innerHTML = "Password reset";
     break;
+
 }
