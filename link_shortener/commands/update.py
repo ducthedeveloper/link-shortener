@@ -50,6 +50,7 @@ async def update_link(request, link_id, data):
                 else link_data['endpoint'],
                 url=await url_validation(data['url'], trans) if data['url']
                 else link_data['url'],
+
                 switch_date=data['switch_date']
             ))
         else:
